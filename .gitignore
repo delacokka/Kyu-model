@@ -1,0 +1,21 @@
+# Служебное и сгенерированное — не коммитим
+__pycache__/
+*.py[cod]
+*.log
+
+# Временные файлы
+*.tmp
+*.bak
+
+# ОС
+Thumbs.db
+desktop.ini
+.DS_Store
+
+/models/
+*.onnx
+*.onnx.data
+*.safetensors
+*.pt
+*.pth
+*.ckpt

@@ -1,0 +1,271 @@
+{
+  "title": "Grainkyu v2 — comparison sheets",
+  "generated": "2026-11-05",
+  "description": "Bicubic ×2 vs Grainkyu v2 / v2 Soft / v2 Speed, identical crop, natural 2x panels, CPU fp16 inference, tile 384 / border 16.",
+  "source_frames_dir": "исходные кадры (only 320x320 crops are published)",
+  "upscalers": [
+    {
+      "label": "Grainkyu v2",
+      "file": "models/Grainkyu_v2.onnx"
+    },
+    {
+      "label": "Grainkyu v2 Soft",
+      "file": "models/Grainkyu_v2_soft.onnx"
+    },
+    {
+      "label": "Grainkyu v2 Speed",
+      "file": "models/Grainkyu_v2_speed.onnx"
+    }
+  ],
+  "sheets": [
+    {
+      "file": "examples/comparisons/compare_face.png",
+      "source": "frame_000088.png",
+      "source_file": "frame_000088.png",
+      "crop": [
+        1375,
+        140,
+        320,
+        320
+      ],
+      "src_crop_size": [
+        320,
+        320
+      ],
+      "src_crop_file": "examples/comparisons/sources/compare_face_1x.png",
+      "panel_px": [
+        640,
+        640
+      ],
+      "sheet_px": [
+        2646,
+        822
+      ],
+      "labels": [
+        "Bicubic ×2",
+        "Grainkyu v2",
+        "Grainkyu v2 Soft",
+        "Grainkyu v2 Speed"
+      ],
+      "models": [
+        {
+          "label": "Grainkyu v2",
+          "file": "models/Grainkyu_v2.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 6.28,
+          "border_ring_vs_bicubic_mad": 6.53,
+          "interior_vs_bicubic_mad": 6.28
+        },
+        {
+          "label": "Grainkyu v2 Soft",
+          "file": "models/Grainkyu_v2_soft.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 6.37,
+          "border_ring_vs_bicubic_mad": 7.27,
+          "interior_vs_bicubic_mad": 6.35
+        },
+        {
+          "label": "Grainkyu v2 Speed",
+          "file": "models/Grainkyu_v2_speed.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 6.32,
+          "border_ring_vs_bicubic_mad": 6.73,
+          "interior_vs_bicubic_mad": 6.31
+        }
+      ],
+      "pipeline": {
+        "device": "cpu",
+        "provider": "CPUExecutionProvider",
+        "precision": "fp16 (input and output tensors)",
+        "geometry": {
+          "tile": 384,
+          "border": 16,
+          "core_px": 320,
+          "patch_px": 352,
+          "model_output_px": 704,
+          "valid_crop_offset_px": 32,
+          "panel_px": 640
+        },
+        "input": "PIL RGB crop -> float32 / 255 -> CHW -> float16 NCHW",
+        "output": "clip(0,1) -> CHW->HWC -> *255 -> round -> uint8 (natural 2x, no resampling)",
+        "bicubic": "PIL Image.resize((640,640), BICUBIC) from the 320x320 source crop",
+        "note": "patch = core + 16 px of real frame context per side (no zero padding); валидная область соответствует interior-тайлу 384 / border 16"
+      }
+    },
+    {
+      "file": "examples/comparisons/compare_detail_stone.png",
+      "source": "TEST2.png",
+      "source_file": "TEST2.png",
+      "crop": [
+        1540,
+        630,
+        320,
+        320
+      ],
+      "src_crop_size": [
+        320,
+        320
+      ],
+      "src_crop_file": "examples/comparisons/sources/compare_detail_stone_1x.png",
+      "panel_px": [
+        640,
+        640
+      ],
+      "sheet_px": [
+        2646,
+        822
+      ],
+      "labels": [
+        "Bicubic ×2",
+        "Grainkyu v2",
+        "Grainkyu v2 Soft",
+        "Grainkyu v2 Speed"
+      ],
+      "models": [
+        {
+          "label": "Grainkyu v2",
+          "file": "models/Grainkyu_v2.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 4.3,
+          "border_ring_vs_bicubic_mad": 3.85,
+          "interior_vs_bicubic_mad": 4.31
+        },
+        {
+          "label": "Grainkyu v2 Soft",
+          "file": "models/Grainkyu_v2_soft.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 3.98,
+          "border_ring_vs_bicubic_mad": 3.49,
+          "interior_vs_bicubic_mad": 3.98
+        },
+        {
+          "label": "Grainkyu v2 Speed",
+          "file": "models/Grainkyu_v2_speed.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 4.37,
+          "border_ring_vs_bicubic_mad": 3.84,
+          "interior_vs_bicubic_mad": 4.37
+        }
+      ],
+      "pipeline": {
+        "device": "cpu",
+        "provider": "CPUExecutionProvider",
+        "precision": "fp16 (input and output tensors)",
+        "geometry": {
+          "tile": 384,
+          "border": 16,
+          "core_px": 320,
+          "patch_px": 352,
+          "model_output_px": 704,
+          "valid_crop_offset_px": 32,
+          "panel_px": 640
+        },
+        "input": "PIL RGB crop -> float32 / 255 -> CHW -> float16 NCHW",
+        "output": "clip(0,1) -> CHW->HWC -> *255 -> round -> uint8 (natural 2x, no resampling)",
+        "bicubic": "PIL Image.resize((640,640), BICUBIC) from the 320x320 source crop",
+        "note": "patch = core + 16 px of real frame context per side (no zero padding); валидная область соответствует interior-тайлу 384 / border 16"
+      }
+    },
+    {
+      "file": "examples/comparisons/compare_detail_fabric.png",
+      "source": "SotS_REMUX-221-1920x1080.png",
+      "source_file": "SotS_REMUX-221-1920x1080.png",
+      "crop": [
+        170,
+        240,
+        320,
+        320
+      ],
+      "src_crop_size": [
+        320,
+        320
+      ],
+      "src_crop_file": "examples/comparisons/sources/compare_detail_fabric_1x.png",
+      "panel_px": [
+        640,
+        640
+      ],
+      "sheet_px": [
+        2646,
+        822
+      ],
+      "labels": [
+        "Bicubic ×2",
+        "Grainkyu v2",
+        "Grainkyu v2 Soft",
+        "Grainkyu v2 Speed"
+      ],
+      "models": [
+        {
+          "label": "Grainkyu v2",
+          "file": "models/Grainkyu_v2.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 3.47,
+          "border_ring_vs_bicubic_mad": 2.95,
+          "interior_vs_bicubic_mad": 3.48
+        },
+        {
+          "label": "Grainkyu v2 Soft",
+          "file": "models/Grainkyu_v2_soft.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 3.47,
+          "border_ring_vs_bicubic_mad": 2.93,
+          "interior_vs_bicubic_mad": 3.47
+        },
+        {
+          "label": "Grainkyu v2 Speed",
+          "file": "models/Grainkyu_v2_speed.onnx",
+          "model_output_px": [
+            704,
+            704
+          ],
+          "panel_vs_bicubic_mad": 3.45,
+          "border_ring_vs_bicubic_mad": 2.94,
+          "interior_vs_bicubic_mad": 3.46
+        }
+      ],
+      "pipeline": {
+        "device": "cpu",
+        "provider": "CPUExecutionProvider",
+        "precision": "fp16 (input and output tensors)",
+        "geometry": {
+          "tile": 384,
+          "border": 16,
+          "core_px": 320,
+          "patch_px": 352,
+          "model_output_px": 704,
+          "valid_crop_offset_px": 32,
+          "panel_px": 640
+        },
+        "input": "PIL RGB crop -> float32 / 255 -> CHW -> float16 NCHW",
+        "output": "clip(0,1) -> CHW->HWC -> *255 -> round -> uint8 (natural 2x, no resampling)",
+        "bicubic": "PIL Image.resize((640,640), BICUBIC) from the 320x320 source crop",
+        "note": "patch = core + 16 px of real frame context per side (no zero padding); валидная область соответствует interior-тайлу 384 / border 16"
+      }
+    }
+  ]
+}
