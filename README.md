@@ -17,7 +17,7 @@ The models add subtle grain to give the image a more natural look, avoiding over
 
 - **Grainkyu v2** — the main model, focused on maximum quality and detail.
 - **Grainkyu v2 Soft** — nearly the same sharpness, with less grain. A good choice for anime that already has pronounced grain in the source.
-- **Grainkyu v2 Speed** — quality close to v2 on a more compact architecture. Runs noticeably faster, making 4K anime playback more accessible on less powerful hardware. On an RTX 3070, it achieves **36 FPS** at 1080p → 4K, enough for real-time playback of 24–30 FPS content.
+- **Grainkyu v2 Speed** — quality close to v2 on a more compact architecture. Runs noticeably faster, making 4K anime playback more accessible on less powerful hardware.
 
 ### Model specifications
 
@@ -64,9 +64,9 @@ NVIDIA GeForce RTX 3070 8 GB (driver 610.62), Windows 11, TensorRT 11.2.1.2, FP1
 
 | Model | FPS |
 |---|---|
-| **Grainkyu v2** | **26.5** |
-| **Grainkyu v2 Soft** | **26.5** |
-| **Grainkyu v2 Speed** | **36** |
+| **Grainkyu v2** | **42.41** |
+| **Grainkyu v2 Soft** | **42.41** |
+| **Grainkyu v2 Speed** | **73.63** |
 
 #### Inference only, 1920×1080 → 3840×2160
 
@@ -74,9 +74,9 @@ Full-frame model inference, excluding video encoding.
 
 | Model | Frame time | FPS |
 |---|---|---|
-| Grainkyu v2 | 27.7 ms | 36.1 |
-| Grainkyu v2 Soft | 28.1 ms | 35.6 |
-| Grainkyu v2 Speed | 16.3 ms | 61.3 |
+| Grainkyu v2 | 23.6 ms | 42.41 |
+| Grainkyu v2 Soft | 23.6 ms | 42.41 |
+| Grainkyu v2 Speed | 10.8 ms | 92.60 |
 
 ### License
 
@@ -94,7 +94,7 @@ MIT — see [LICENSE](LICENSE).
 
 - **Grainkyu v2** — основная версия с приоритетом на максимальное качество и детализацию.
 - **Grainkyu v2 Soft** — почти та же резкость, но меньше зерна. Хороший выбор для аниме с выраженной зернистостью исходника.
-- **Grainkyu v2 Speed** — качество, близкое к v2, на более компактной архитектуре. Заметно ускоряет обработку и делает просмотр аниме в 4K доступнее на менее мощном железе. На RTX 3070 — **36 FPS** при 1080p → 4K, достаточно для просмотра в реальном времени при 24–30 кадрах/с.
+- **Grainkyu v2 Speed** — качество, близкое к v2, на более компактной архитектуре. Заметно ускоряет обработку и делает просмотр аниме в 4K доступнее на менее мощном железе.
 
 ### Характеристики моделей
 
@@ -141,9 +141,9 @@ NVIDIA GeForce RTX 3070 8 ГБ (драйвер 610.62), Windows 11, TensorRT 11.
 
 | Модель | FPS |
 |---|---|
-| **Grainkyu v2** | **26.5** |
-| **Grainkyu v2 Soft** | **26.5** |
-| **Grainkyu v2 Speed** | **36** |
+| **Grainkyu v2** | **42.41** |
+| **Grainkyu v2 Soft** | **42.41** |
+| **Grainkyu v2 Speed** | **73.63** |
 
 #### Только инференс, 1920×1080 → 3840×2160
 
@@ -151,9 +151,9 @@ NVIDIA GeForce RTX 3070 8 ГБ (драйвер 610.62), Windows 11, TensorRT 11.
 
 | Модель | Время кадра | FPS |
 |---|---|---|
-| Grainkyu v2 | 27.7 мс | 36.1 |
-| Grainkyu v2 Soft | 28.1 мс | 35.6 |
-| Grainkyu v2 Speed | 16.3 мс | 61.3 |
+| Grainkyu v2 | 23.6 мс | 42.41 |
+| Grainkyu v2 Soft | 23.6 мс | 42.41 |
+| Grainkyu v2 Speed | 10.8 мс | 92.60 |
 
 ### Лицензия
 
